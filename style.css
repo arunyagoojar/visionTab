@@ -1,0 +1,135 @@
+@font-face {
+    font-family: 'Apple-Stencil';
+    src: url('./font/SF\ Pro\ -\ Semibold\ Stencil.otf');
+}
+
+@font-face {
+    font-family: 'Apple-Rounded';
+    src: url('./font/SF\ Pro\ -\ Semibold\ Rounded.otf');
+}
+
+@font-face {
+    font-family: 'Apple-Rails';
+    src: url('./font/SF\ Pro\ -\ Semibold\ Rails.otf');
+}
+
+body,
+html {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    background-image: url("./src/bg.jpg");
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding-bottom: 5vh;
+}
+
+#search-input {
+    font-size: 16px;
+    width: 30rem;
+    border: none;
+    border-radius: 25px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    padding: 5px 15px;
+    transition: background-color 0.05s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+    #search-input {
+        width: 20rem;
+    }
+}
+
+#search-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+#search-input:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#search-input:focus {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.button {
+    display: none;
+}
+
+#search-button {
+    height: 45px;
+    width: 45px;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-radius: 25px;
+    transition: all 0.15s ease-in-out;
+}
+
+#search-button:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+}
+
+#search-button img {
+    height: 30px;
+    width: 30px;
+    opacity: 0.6;
+}
+
+.content {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-time {
+    color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-time .time {
+    font-family: Apple-Stencil, sans-serif;
+    font-weight: 700;
+    font-size: 8rem;
+    padding-top: 10px;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+
+.date-time h3 {
+    font-family: Apple-Rounded, sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+}

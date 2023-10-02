@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "Vision Tab",
+    "version": "0.1",
+    "description": "New tab for chrome for programmers to keep them focused and motivated",
+    "chrome_url_overrides": {
+        "newtab": "tab.html"
+    },
+    "permissions": [
+        "bookmarks"
+    ],
+    "icons": {
+        "16": "./src/logo.png",
+        "32": "./src/logo.png",
+        "48": "./src/logo.png",
+        "128": "./src/logo.png"
+    }
+}
