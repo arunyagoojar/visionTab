@@ -95,12 +95,17 @@ html {
 }
 
 .content {
-    height: 90vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+}
+
+.contentweather {
+    display: flex;
+    flex-direction: column;
 }
 
 .date-time {
@@ -129,7 +134,48 @@ html {
     margin: 0;
 }
 
-.main {
-    display: flex;
-    flex-direction: row;
+div.panel {
+    display: inline-block;
+}
+
+div.right-panel {
+    position: absolute;
+    float: right;
+    top: 0;
+    margin-top: 35px;
+    padding-left: 10px;
+}
+
+.float {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.weather {
+    display: inline;
+    width: fit-content;
+}
+
+.weather h4 {
+    font-family: Apple-Rounded, sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.floatg {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+#greeting {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: Apple-Rounded, sans-serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0;
 }

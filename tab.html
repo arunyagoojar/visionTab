@@ -9,9 +9,20 @@
 
 <body>
   <div class="main">
-    <div class="left">
-
+    <div class="contentweather">
+      <div class="float">
+        <div class="weather">
+          <h4 id="description" class="weather">Updating weather...</h4>
+          <h4 id="temperature" class="weather"></h4>
+        </div>
+      </div>
     </div>
+    <div class="contentweather">
+      <div class="floatg">
+        <h3 id="greeting" class="greeting"></h3>
+      </div>
+    </div>
+
     <div class="content">
       <div class="date-time">
         <h3 id="date"></h3>
@@ -25,10 +36,6 @@
         <input type="text" id="search-input" placeholder="Search the web...">
         <button class="button" id="search-button"><img src="./src/search.svg"></button>
       </div>
-    </div>
-
-    <div class="right">
-
     </div>
   </div>
   <script src="script.js"></script>
