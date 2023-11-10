@@ -18,7 +18,7 @@ html {
     height: 100vh;
     width: 100vw;
     margin: 0;
-    background-image: url("./src/bg.jpg");
+    background-image: url("./src/bg2.jpg");
     background-color: #cccccc;
     background-position: center;
     background-repeat: no-repeat;
@@ -28,11 +28,32 @@ html {
     align-items: center;
 }
 
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 90vh;
+
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently supported by Chrome, Edge, Opera, and Firefox */
+}
+
 #search-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 10px;
+    gap: 30px;
     padding-bottom: 5vh;
 }
 
@@ -40,13 +61,21 @@ html {
     font-size: 16px;
     width: 30rem;
     border: none;
-    border-radius: 25px;
     height: 35px;
-    background-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(13.7px);
+    -webkit-backdrop-filter: blur(13.7px);
     color: rgba(255, 255, 255, 0.85);
     text-align: center;
     padding: 5px 15px;
+
+    box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.15);
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.15);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.15);
     transition: background-color 0.05s ease-in-out;
+
 }
 
 @media screen and (max-width: 600px) {
@@ -59,12 +88,29 @@ html {
     color: rgba(255, 255, 255, 0.4);
 }
 
+#search-input:focus::placeholder {
+    color: transparent;
+}
+
+
 #search-input:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.21);
+    border-radius: 16px;
+    backdrop-filter: blur(13.7px);
+    -webkit-backdrop-filter: blur(13.7px);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
 }
 
 #search-input:focus {
-    background-color: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.21);
+    border-radius: 16px;
+    backdrop-filter: blur(13.7px);
+    -webkit-backdrop-filter: blur(13.7px);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.2);
 }
 
 .button {
@@ -95,7 +141,7 @@ html {
 }
 
 .content {
-    height: 85vh;
+    height: 87vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -105,7 +151,8 @@ html {
 
 .contentweather {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    flex-direction: row;
 }
 
 .date-time {
@@ -124,6 +171,7 @@ html {
     margin: 0;
     display: flex;
     gap: 15px;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -132,6 +180,7 @@ html {
     font-weight: 500;
     font-size: 1.5rem;
     margin: 0;
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
 }
 
 div.panel {
@@ -147,13 +196,15 @@ div.right-panel {
 }
 
 .float {
-    position: absolute;
-    top: 30px;
-    right: 30px;
+    padding-left: 3vw;
+    align-items: left;
     color: rgba(255, 255, 255, 0.6);
 }
 
 .weather {
+    align-self: flex-start;
+    margin-top: auto;
+    color: rgba(255, 255, 255, 0.6);
     display: inline;
     width: fit-content;
 }
@@ -161,21 +212,75 @@ div.right-panel {
 .weather h4 {
     font-family: Apple-Rounded, sans-serif;
     font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     margin: 0;
 }
 
+.contentg {
+    display: flex;
+    flex-direction: column;
+}
+
 .floatg {
-    position: absolute;
-    top: 30px;
-    left: 30px;
     color: rgba(255, 255, 255, 0.6);
 }
 
 #greeting {
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
     color: rgba(255, 255, 255, 0.6);
     font-family: Apple-Rounded, sans-serif;
-    font-weight: 500;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: 0;
+}
+
+#uploadButton {
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    opacity: 0.6;
+    padding-right: 3vw;
+    transition: all 0.2s ease-in-out;
+}
+
+#uploadButton:hover {
+    margin-right: -1px;
+    margin-top: -2px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.8;
+}
+
+#bookmarksList {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+#bookmarksList div {
+    display: flex;
+    height: 100px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#bookmarksList div img {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(13.7px);
+    -webkit-backdrop-filter: blur(13.7px);
+    padding: 10px 10px;
+}
+
+#bookmarksList div a {
+    font-family: Apple-Rounded, sans-serif;
+    text-decoration: none;
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.7);
 }

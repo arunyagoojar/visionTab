@@ -2,26 +2,13 @@
 <html>
 
 <head>
-  <link rel="icon" href="./src/logo.png" type="image/x-icon">
+  <link rel="icon" href="./src/fav.png" type="image/x-icon">
   <title>Home</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
   <div class="main">
-    <div class="contentweather">
-      <div class="float">
-        <div class="weather">
-          <h4 id="description" class="weather">Updating weather...</h4>
-          <h4 id="temperature" class="weather"></h4>
-        </div>
-      </div>
-    </div>
-    <div class="contentweather">
-      <div class="floatg">
-        <h3 id="greeting" class="greeting"></h3>
-      </div>
-    </div>
 
     <div class="content">
       <div class="date-time">
@@ -32,10 +19,33 @@
           <span id="minutes"></span>
         </div>
       </div>
+
+      <div id="bookmarks">
+        <ul id="bookmarksList">
+        </ul>
+      </div>
+
+
       <div id="search-container">
-        <input type="text" id="search-input" placeholder="Search the web...">
+        <div class="contentg">
+          <div class="floatg">
+            <h3 id="greeting" class="greeting"></h3>
+          </div>
+        </div>
+        <input type="text" id="search-input" placeholder="search">
         <button class="button" id="search-button"><img src="./src/search.svg"></button>
       </div>
+    </div>
+
+    <div class="contentweather">
+      <div class="float">
+        <div class="weather">
+          <h4 id="description" class="weather">Updating weather...</h4>
+          <h4 id="temperature" class="weather"></h4>
+        </div>
+      </div>
+      <input type="file" id="imageUpload" style="display: none" />
+      <img id="uploadButton" alt="Upload your background" src="./src/up.svg" title="Upload your background" />
     </div>
   </div>
   <script src="script.js"></script>

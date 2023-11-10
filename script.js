@@ -10,23 +10,20 @@ document.getElementById('search-button').addEventListener('click', function () {
   window.location = 'https://www.google.com/search?q=' + query;
 });
 
-// Update date and time
 function updateDateTime() {
   var now = new Date();
   var options = { weekday: 'long', day: 'numeric', month: 'long' };
   var date = now.toLocaleDateString('en-US', options);
-  var hours = now.getHours().toString().padStart(2, '0'); // pad hours with leading zero if needed
-  var minutes = now.getMinutes().toString().padStart(2, '0'); // pad minutes with leading zero if needed
+  var hours = now.getHours().toString().padStart(2, '0');
+  var minutes = now.getMinutes().toString().padStart(2, '0');
 
   document.getElementById('date').textContent = date;
   document.getElementById('hours').textContent = hours;
   document.getElementById('minutes').textContent = minutes;
 }
 
-// Update date and time every second
 setInterval(updateDateTime, 10);
 
-//weather
 const apiKey = '2edf3963535988a0c1d73395421e6674';
 
 let temperatureElement = document.getElementById('temperature');
@@ -41,7 +38,6 @@ function success(position) {
   let storedData = localStorage.getItem('weatherData');
   let weatherData = storedData ? JSON.parse(storedData) : null;
 
-  // Check if data is more than an hour old
   if (weatherData && new Date().getTime() - weatherData.timestamp < 3600000) {
     displayWeather(weatherData.temperature, weatherData.description);
   } else {
@@ -81,6 +77,7 @@ function displayWeather(temperature, description) {
 }
 
 // Greet
+// Greet
 let greetingElement = document.getElementById('greeting');
 
 let date = new Date();
@@ -90,15 +87,93 @@ let greeting;
 let className;
 
 if (hours < 12) {
-  greeting = 'Good Morning!';
+  greeting = 'Good Morning';
   className = 'morning';
 } else if (hours < 18) {
-  greeting = 'Good Afternoon!';
+  greeting = 'Good Afternoon';
   className = 'afternoon';
 } else {
-  greeting = 'Good Evening!';
+  greeting = 'Good Evening';
   className = 'evening';
 }
 
+let name = localStorage.getItem('name');
+
+if (!name) {
+  name = prompt('Please enter your name:');
+  localStorage.setItem('name', name);
+}
+
+greeting += ' ' + name + '.';
+
 greetingElement.innerHTML = greeting;
 greetingElement.className = className;
+
+
+//bg
+
+if (localStorage.getItem('bgImage')) {
+  document.body.style.backgroundImage = 'url(' + localStorage.getItem('bgImage') + ')';
+}
+
+document.getElementById('uploadButton').addEventListener('click', function () {
+  document.getElementById('imageUpload').click();
+});
+
+document.getElementById('imageUpload').addEventListener('change', function (e) {
+  var file = e.target.files[0];
+
+  if (file.size > 2 * 1024 * 1024) {
+    alert("The file size should not exceed 2MB.");
+    return;
+  }
+
+  var reader = new FileReader();
+
+  reader.onloadend = function () {
+    var base64data = reader.result;
+    document.body.style.backgroundImage = 'url(' + base64data + ')';
+    localStorage.setItem('bgImage', base64data);
+  }
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+});
+
+//bookmark
+chrome.bookmarks.getTree(function (bookmarkTreeNodes) {
+  displayBookmarks(bookmarkTreeNodes);
+});
+
+function displayBookmarks(bookmarkNodes) {
+  var i;
+  for (i = 0; i < bookmarkNodes.length; i++) {
+    createBookmark(bookmarkNodes[i]);
+  }
+}
+
+function createBookmark(bookmarkNode) {
+  if (bookmarkNode.url) {
+    var div = document.createElement('div');
+    div.style.textAlign = 'center';
+
+    var img = document.createElement('img');
+    img.src = 'http://www.google.com/s2/favicons?domain=' + new URL(bookmarkNode.url).hostname;
+    img.style.display = 'block';
+    img.style.margin = '0 auto';
+    div.appendChild(img);
+
+    var a = document.createElement('a');
+    a.href = bookmarkNode.url;
+    a.textContent = bookmarkNode.title.replace(/[^\w\s]/gi, '').split(' ')[0]; // Remove symbols and get the first word of the title
+    a.target = '_blank';
+    div.appendChild(a);
+
+    document.getElementById('bookmarksList').appendChild(div);
+  }
+
+  if (bookmarkNode.children && bookmarkNode.children.length > 0) {
+    displayBookmarks(bookmarkNode.children);
+  }
+}
