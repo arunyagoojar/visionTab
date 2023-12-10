@@ -4,7 +4,7 @@
     "version": "0.1",
     "description": "New tab for chrome for programmers to keep them focused and motivated",
     "chrome_url_overrides": {
-        "newtab": "tab.html"
+        "newtab": "index.html"
     },
     "permissions": [
         "bookmarks"
