@@ -141,38 +141,6 @@ document.getElementById('imageUpload').addEventListener('change', function (e) {
   }
 });
 
-//bookmark
-chrome.bookmarks.getTree(function (bookmarkTreeNodes) {
-  displayBookmarks(bookmarkTreeNodes);
-});
-
-function displayBookmarks(bookmarkNodes) {
-  var i;
-  for (i = 0; i < bookmarkNodes.length; i++) {
-    createBookmark(bookmarkNodes[i]);
-  }
-}
-
-function createBookmark(bookmarkNode) {
-  if (bookmarkNode.url) {
-    var div = document.createElement('div');
-    div.style.textAlign = 'center';
-
-    var img = document.createElement('img');
-    img.src = 'http://www.google.com/s2/favicons?domain=' + new URL(bookmarkNode.url).hostname;
-    img.style.display = 'block';
-    img.style.margin = '0 auto';
-    div.appendChild(img);
-
-    var a = document.createElement('a');
-    a.href = bookmarkNode.url;
-    a.textContent = bookmarkNode.title.replace(/[^\w\s]/gi, '').split(' ')[0]; // Remove symbols and get the first word of the title
-    a.target = '_blank';
-    div.appendChild(a);
-
-    document.getElementById('bookmarksList').appendChild(div);
-  }
-
   if (bookmarkNode.children && bookmarkNode.children.length > 0) {
     displayBookmarks(bookmarkNode.children);
   }
