@@ -22,7 +22,7 @@ function updateDateTime() {
   document.getElementById('minutes').textContent = minutes;
 }
 
-setInterval(updateDateTime, 10);
+setInterval(updateDateTime, 100);
 
 const apiKey = '2edf3963535988a0c1d73395421e6674';
 
